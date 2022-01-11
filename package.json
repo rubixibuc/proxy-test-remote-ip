@@ -1,5 +1,5 @@
 {
-  "name": "proxy-test-remote-ip",
+  "name": "trust-proxy-test",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/rubixibuc/proxy-test-remote-ip.git"
