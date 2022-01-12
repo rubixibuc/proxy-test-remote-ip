@@ -4,7 +4,7 @@ const forwarded = require("forwarded");
 
 router.get("/", async (req, res) => {
   res.status(200).send({
-    forwardedFor: forwarded(req.get("X-Forwarded-For")),
+    forwardedFor: forwarded(req),
     ip: req.ip,
   });
 });
