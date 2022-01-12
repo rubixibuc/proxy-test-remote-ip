@@ -6,8 +6,19 @@ const express = require("express");
 const app = express();
 const http = require("http").Server(app);
 
-if (process.env.TRUST_PROXY) {
-  app.set("trust proxy", process.env.TRUST_PROXY);
+const TRUST_PROXY = process.env.TRUST_PROXY;
+
+if (TRUST_PROXY) {
+  let trustProxy;
+
+  // noinspection JSCheckFunctionSignatures
+  if (!isNaN(TRUST_PROXY)) {
+    trustProxy = +TRUST_PROXY;
+  } else if (TRUST_PROXY === "true" || TRUST_PROXY === "false") {
+    trustProxy = TRUST_PROXY === "true";
+  }
+
+  app.set("trust proxy", trustProxy);
 }
 
 const rateLimit = require("express-rate-limit");
